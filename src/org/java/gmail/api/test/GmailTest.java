@@ -28,6 +28,6 @@ public class GmailTest {
         }
         
         gmailapi.getFolderNames();
-        gmailapi.checkNewMail("inbox","9994955340","","8374566903");
+        gmailapi.checkNewMail("inbox","ananthakrishnan.s.r@gmail.com","9994955340","passwd","8374566903");
     }
 }

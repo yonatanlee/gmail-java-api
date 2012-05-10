@@ -26,9 +26,11 @@ public class NewMailChecker implements Runnable {
     private String smsUserName=null;
     private String smsPassword=null;
     private String mobileNo = null;
+    private String fromemail = null;
     
-    public NewMailChecker(Folder storeFolder,String smsUserName,String smsPassword,String mobileNo) {
+    public NewMailChecker(Folder storeFolder,String fromemail,String smsUserName,String smsPassword,String mobileNo) {
         this.storeFolder = storeFolder;
+        this.fromemail = fromemail;
         this.smsUserName = smsUserName;
         this.smsPassword = smsPassword;
         this.mobileNo = mobileNo;
@@ -83,7 +85,7 @@ public class NewMailChecker implements Runnable {
                     System.out.println(newmail.getSubject());
                     uid = uidfolder.getUID(newmail);
                     
-                    if(newmail.getFrom()[0].toString().contains("ananthakrishnan.s.r@gmail.com"))
+                    if(newmail.getFrom()[0].toString().contains(fromemail))
                     {
                         System.out.println("Sending SMS...");
                         try {
@@ -98,7 +100,7 @@ public class NewMailChecker implements Runnable {
                 }
             }
             try {
-                Thread.sleep(120000);
+                Thread.sleep(12000);
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(NewMailChecker.class.getName()).log(Level.SEVERE, null, ex);

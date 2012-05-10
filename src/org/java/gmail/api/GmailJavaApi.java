@@ -133,7 +133,7 @@ public class GmailJavaApi {
         }
     }
     
-    public void checkNewMail(String folder,String smsUserName,String smsPassword,String mobileNo) {
+    public void checkNewMail(String folder,String fromemail,String smsUserName,String smsPassword,String mobileNo) {
         try {
             storeFolder = store.getFolder(folder);
             storeFolder.open(Folder.READ_ONLY);
@@ -141,7 +141,7 @@ public class GmailJavaApi {
             ex.printStackTrace();
         }
         
-        NewMailChecker newMailChecker = new NewMailChecker(storeFolder,smsUserName,smsPassword,mobileNo);
+        NewMailChecker newMailChecker = new NewMailChecker(storeFolder,fromemail,smsUserName,smsPassword,mobileNo);
         Thread newMailCheckerThread = new Thread(newMailChecker);
         newMailCheckerThread.start();
     }
